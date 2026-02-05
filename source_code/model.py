@@ -52,26 +52,6 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-#   LR Model    #
-LR = LogisticRegression(max_iter=1000)
-LR.fit(X_train_scaled, Y_train)
-
-Y_pred_lr = LR.predict(X_test_scaled)
-
-print("Logistic Regression Accuracy:", accuracy_score(Y_test, Y_pred_lr))
-print(confusion_matrix(Y_test, Y_pred_lr))
-print(classification_report(Y_test, Y_pred_lr))
-
-#   KNN Model    #
-knn = KNeighborsClassifier(n_neighbors=5)
-knn.fit(X_train_scaled, Y_train)
-
-Y_pred_knn = knn.predict(X_test_scaled)
-
-print("KNN Accuracy:", accuracy_score(Y_test, Y_pred_knn))
-print(confusion_matrix(Y_test, Y_pred_knn))
-print(classification_report(Y_test, Y_pred_knn))
-
 #   Random Forest Model    #
 rf = RandomForestClassifier(
     n_estimators=200,
@@ -83,6 +63,17 @@ rf.fit(X_train, Y_train)
 
 Y_pred_rf = rf.predict(X_test)
 
-print("Random Forest Accuracy:", accuracy_score(Y_test, Y_pred_rf))
-print(confusion_matrix(Y_test, Y_pred_rf))
-print(classification_report(Y_test, Y_pred_rf))
+#print("Random Forest Accuracy:", accuracy_score(Y_test, Y_pred_rf))
+#print(confusion_matrix(Y_test, Y_pred_rf))
+#print(classification_report(Y_test, Y_pred_rf))
+
+######        ######
+import joblib
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+joblib.dump(rf, os.path.join(BASE_DIR, "loan_model.pkl"))
+joblib.dump(scaler, os.path.join(BASE_DIR, "scaler.pkl"))
+
+print("Model and scaler saved successfully")
