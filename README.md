@@ -65,6 +65,14 @@ Although Logistic Regression achieved slightly higher accuracy, Random Forest wa
 
 ---
 
+## 🌐 Streamlit Web Application (Live)
+
+This project includes a fully deployed **Streamlit web application** that allows users to check loan eligibility in real time using a trained machine learning model.
+
+### 🔗 Live Demo
+👉 https://loan-approval-prediction-yashst2006.streamlit.app/
+
+
 ## 👤 Author
 **Yashwanth S T**  
 B.E. CSE (AI & ML) 
